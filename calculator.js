@@ -5,6 +5,7 @@ var currentResult_1 = 0;
 var currentResult_2 = 0;
 var previousCalculation;
 var pressedEqual = false; //
+var pressedDecimal = false; //
 
 ///////////////////////////
 function adding(x,y){
@@ -91,9 +92,12 @@ function operate(operator,x,y){
 
 function calculate(){ //I honestly forgot what to do with this
     if(currentOperation.length == 0){
+        console.log("No operations");
         currentOperation = '+';
+        currentResult_2 = 0;
+    } else{
+        currentResult_2 = parseFloat(document.getElementById("display").textContent);
     }
-    currentResult_2 = parseFloat(document.getElementById("display").textContent);
     let answer = operate(currentOperation,currentResult_1,currentResult_2);
     cleared();
     currentResult_1 = answer;
@@ -115,20 +119,32 @@ function display(inputNumber){
     if (displayText == 0 && inputNumber == 101){ //case where initial display is 0 and a decimal point has to be added
         document.getElementById("display").innerText = displayText +".";
     } else if (displayText == 0){ //case where initial display is 0
-        displayText = inputNumber;
-        document.getElementById("display").innerText = displayText;
-    } else if (inputNumber == 101){ //case where a decimal point is added while initial display isn't 0
-        if (!displayText.includes(".")){
-            displayText = displayText + ".";
+        if(inputNumber == 101){ //if decimalButton is pressed, add the decimal after the 0
+            document.getElementById("display").innerText = displayText + ".";
+            pressedDecimal = true;
+        } else if (displayText === "0."){
+            document.getElementById("display").innerText = displayText+""+inputNumber
+        } else {
+            displayText = inputNumber;
+            document.getElementById("display").innerText = displayText;
+            pressedEqual = false;
         }
+    } else if (inputNumber == 101){ //case where a decimal point is added
+        pressedDecimal = true;
+        if (!displayText.includes(".")){ //if it doesn't have the decimal, add it.
+            console.log("adding decimal");
+            document.getElementById("display").innerText = displayText + ".";
+        } 
         //document.getElementById("display").innerText = displayText; //do nothing
-    } else if (pressedEqual == true){ //replaces the old display with the new inputs if it isn't needed anymore.
+    } else if (pressedEqual == true && pressedDecimal == false){ //buggy conditional. I admit that the global variable pressedDecimal and pressedEqual are both of a mess, but they fix issues.
+        console.log("pressedEqual == True");
         document.getElementById("display").innerText = ""+inputNumber;
         pressedEqual = false;
     } else{
-        displayText = displayText + "" + inputNumber;
-        document.getElementById("display").innerText = displayText;
+        console.log("concatenating display");
+        document.getElementById("display").innerText = displayText + "" + inputNumber;
     }
+    //pressedDecimal = false; //resets the pressedDecimal back into false value
 }
 
 function cleared(){
@@ -137,4 +153,5 @@ function cleared(){
     document.getElementById("previousCalculation").innerText = "";
     currentResult_1 = 0;
     currentResult_2 = 0;
+    currentOperation = "";
 }
