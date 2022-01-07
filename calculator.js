@@ -95,9 +95,18 @@ function calculate(){ //I honestly forgot what to do with this
     if(currentOperation.length == 0){
         currentOperation = '+';
     }
+    currentResult_2 = parseFloat(document.getElementById("display").textContent);
     let answer = operate(currentOperation,currentResult_1,currentResult_2);
+    cleared();
+    currentResult_1 = answer;
     console.log("Calculate Result is: "+answer);
     return answer;
+}
+
+function equalClick(){
+    let answer = calculate();
+    document.getElementById("display").innerText = ""+answer;
+
 }
 
 //display section
