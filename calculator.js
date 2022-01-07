@@ -3,6 +3,7 @@
 var currentOperation;
 var currentResult_1 = 0;
 var currentResult_2 = 0;
+var previousCalculation;
 
 ///////////////////////////
 function adding(x,y){
@@ -42,13 +43,29 @@ function multiplying(x,y){
 }
 
 function getOperation(op){ //gets the operation and the existing number on display
-    if (currentResult_1 == 0){
+    previousCalculation = document.getElementById("previousCalculation").textContent;
+    currentResult_2 = parseFloat(document.getElementById("display").textContent);
+    if (previousCalculation.length != 0 && currentResult_2 == 0){ //if main display is 0, simply just change the operation without calculating anything
+        console.log("only changing the operation");
+        document.getElementById("previousCalculation").innerText = currentResult_1 + "" + op;
+    } else if (previousCalculation.length != 0){ // if there is an existing operation to be executed, do it first before changing the currentOperation and replacing the old number
+        console.log("existing previous operation");
+        //currentResult_2 = parseFloat(document.getElementById("display").textContent);
+        let answer = calculate(); //saves the answer before clearing everything
+        cleared(); //clears everything
+        currentResult_1 = answer;
+        document.getElementById("previousCalculation").innerText = currentResult_1+ "" +op;
+
+    } else{ //no previous operations, display the old number with the current operation
+        console.log("no previous operations");
+        previousCalculation = document.getElementById("display").textContent + "" + op;
+        console.log("operation is "+op);
+        console.log("previousCalc is "+previousCalculation);
         currentResult_1 = parseFloat(document.getElementById("display").textContent);
-    } else{
-        currentResult_2 = parseFloat(document.getElementById("display").textContent);
+        document.getElementById("previousCalculation").innerText = previousCalculation; //display the current operation and the number
+        document.getElementById("display").innerText = "0"; //reset the main display
     }
     currentOperation = op;
-    calculate();
     //I need a case where if the currentResult_1 is 0, it will still do the calculations.
     //Current missing feature: how to calculate when a current number exists to be calculated. A calculation can be done without pressing the equal button.
     //I need to take two numbers, and do the necessary operation to them.
@@ -74,11 +91,13 @@ function operate(operator,x,y){
     }
 }
 
-function calculate(){
+function calculate(){ //I honestly forgot what to do with this
     if(currentOperation.length == 0){
         currentOperation = '+';
     }
-    console.log("Calculate Result is: "+operate(currentOperation,currentResult_1,currentResult_2));
+    let answer = operate(currentOperation,currentResult_1,currentResult_2);
+    console.log("Calculate Result is: "+answer);
+    return answer;
 }
 
 //display section
@@ -86,10 +105,7 @@ function calculate(){
 function display(inputNumber){
     let displayText = document.getElementById("display").textContent;
     console.log("display is: "+displayText);
-    if (currentResult_1 != 0){
-        console.log("here");
-        document.getElementById("display").innerText = ""+inputNumber;
-    } else if (displayText == 0 && inputNumber == 101){ //case where initial display is 0 and a decimal point has to be added
+    if (displayText == 0 && inputNumber == 101){ //case where initial display is 0 and a decimal point has to be added
         document.getElementById("display").innerText = displayText +".";
     } else if (displayText == 0){ //case where initial display is 0
         displayText = inputNumber;
@@ -98,8 +114,8 @@ function display(inputNumber){
         if (!displayText.includes(".")){
             displayText = displayText + ".";
         }
-        document.getElementById("display").innerText = displayText
-    }   else{
+        //document.getElementById("display").innerText = displayText; //do nothing
+    } else{
         displayText = displayText + "" + inputNumber;
         document.getElementById("display").innerText = displayText;
     }
@@ -108,6 +124,7 @@ function display(inputNumber){
 function cleared(){
     console.log("Cleared");
     document.getElementById("display").innerText = "0";
+    document.getElementById("previousCalculation").innerText = "";
     currentResult_1 = 0;
     currentResult_2 = 0;
 }
