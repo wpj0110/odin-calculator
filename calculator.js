@@ -66,9 +66,6 @@ function getOperation(op){ //gets the operation and the existing number on displ
         document.getElementById("display").innerText = "0"; //reset the main display
     }
     currentOperation = op;
-    //I need a case where if the currentResult_1 is 0, it will still do the calculations.
-    //Current missing feature: how to calculate when a current number exists to be calculated. A calculation can be done without pressing the equal button.
-    //I need to take two numbers, and do the necessary operation to them.
 }
 //Operate will use the current operation selected. 
 function operate(operator,x,y){
@@ -106,7 +103,6 @@ function calculate(){ //I honestly forgot what to do with this
 function equalClick(){
     let answer = calculate();
     document.getElementById("display").innerText = ""+answer;
-
 }
 
 //display section
