@@ -4,6 +4,7 @@ var currentOperation;
 var currentResult_1 = 0;
 var currentResult_2 = 0;
 var previousCalculation;
+var pressedEqual = false; //
 
 ///////////////////////////
 function adding(x,y){
@@ -103,6 +104,7 @@ function calculate(){ //I honestly forgot what to do with this
 function equalClick(){
     let answer = calculate();
     document.getElementById("display").innerText = ""+answer;
+    pressedEqual = true;
 }
 
 //display section
@@ -120,6 +122,9 @@ function display(inputNumber){
             displayText = displayText + ".";
         }
         //document.getElementById("display").innerText = displayText; //do nothing
+    } else if (pressedEqual == true){ //replaces the old display with the new inputs if it isn't needed anymore.
+        document.getElementById("display").innerText = ""+inputNumber;
+        pressedEqual = false;
     } else{
         displayText = displayText + "" + inputNumber;
         document.getElementById("display").innerText = displayText;
