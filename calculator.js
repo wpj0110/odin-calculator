@@ -5,7 +5,6 @@ var currentResult_1 = 0;
 var currentResult_2 = 0;
 var previousCalculation;
 var pressedEqual = false; //
-//var pressedDecimal = true; //
 
 ///////////////////////////
 function adding(x,y){
@@ -121,7 +120,6 @@ function display(inputNumber){
     } else if (displayText == 0){ //case where initial display is 0
         if(inputNumber == 101){ //if decimalButton is pressed, add the decimal after the 0
             document.getElementById("display").innerText = displayText + ".";
-            //pressedDecimal = true;
         } else if (displayText === "0."){
             document.getElementById("display").innerText = displayText+""+inputNumber
         } else {
@@ -130,21 +128,21 @@ function display(inputNumber){
             pressedEqual = false;
         }
     } else if (inputNumber == 101){ //case where a decimal point is added
-        //pressedDecimal = true;
         if (!displayText.includes(".")){ //if it doesn't have the decimal, add it.
             console.log("adding decimal");
             document.getElementById("display").innerText = displayText + ".";
         } 
         //document.getElementById("display").innerText = displayText; //do nothing
-    } else if (pressedEqual == true){ //pressedDecimal == true){ //buggy conditional. I admit that the global variable pressedDecimal and pressedEqual are both of a mess, but they fix issues.
-        console.log("pressedEqual == True");
-        document.getElementById("display").innerText = ""+inputNumber;
-        pressedEqual = false;
+    } else if (pressedEqual == true){ 
+        if(!displayText.includes(".")){
+            console.log("pressedEqual == True");
+            document.getElementById("display").innerText = ""+inputNumber;
+            pressedEqual = false;
+        }
     } else{
         console.log("concatenating display");
         document.getElementById("display").innerText = displayText + "" + inputNumber;
     }
-    //pressedDecimal = false; //resets the pressedDecimal back into false value
 }
 
 function cleared(){
@@ -154,4 +152,5 @@ function cleared(){
     currentResult_1 = 0;
     currentResult_2 = 0;
     currentOperation = "";
+    pressedEqual = false;
 }
