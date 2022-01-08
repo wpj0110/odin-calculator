@@ -7,9 +7,12 @@
 }
 
 .calculatorContainer{
-    max-width: 100px;
+    max-width: 150px;
+}
+.buttonContainer{
+    display:flex;
 }
 
 .screen{
-
+    
 }

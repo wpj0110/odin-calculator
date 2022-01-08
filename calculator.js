@@ -114,10 +114,12 @@ function equalClick(){
 
 function display(inputNumber){
     let displayText = document.getElementById("display").textContent;
-    console.log("display is: "+displayText);
+    console.log("previous display is: "+displayText);
     if (displayText == 0 && inputNumber == 101){ //case where initial display is 0 and a decimal point has to be added
+        console.log("decimal is added on 0");
         document.getElementById("display").innerText = displayText +".";
     } else if (displayText == 0){ //case where initial display is 0
+        console.log("display is 0");
         if(inputNumber == 101){ //if decimalButton is pressed, add the decimal after the 0
             document.getElementById("display").innerText = displayText + ".";
         } else if (displayText === "0."){
@@ -128,21 +130,25 @@ function display(inputNumber){
             pressedEqual = false;
         }
     } else if (inputNumber == 101){ //case where a decimal point is added
+        console.log("decimal point");
         if (!displayText.includes(".")){ //if it doesn't have the decimal, add it.
             console.log("adding decimal");
             document.getElementById("display").innerText = displayText + ".";
         } 
-        //document.getElementById("display").innerText = displayText; //do nothing
     } else if (pressedEqual == true){ 
+        console.log("pressedEqual == True");
         if(!displayText.includes(".")){
-            console.log("pressedEqual == True");
             document.getElementById("display").innerText = ""+inputNumber;
+            pressedEqual = false;
+        } else{
+            document.getElementById("display").innerText = inputNumber;
             pressedEqual = false;
         }
     } else{
         console.log("concatenating display");
         document.getElementById("display").innerText = displayText + "" + inputNumber;
     }
+    console.log("after display is: "+document.getElementById("display").textContent);
 }
 
 function cleared(){
