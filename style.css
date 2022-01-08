@@ -1,3 +1,15 @@
+body{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+button{
+    width:50px;
+    height:50px;
+    background: burlywood;
+    
+}
+
 .bodyContainer{
     min-height: 100vh;
     display: flex;
@@ -19,15 +31,14 @@
     border-style: solid;
     border-radius: 10px;
     border-width: thick;
-    height: 300px;
-    width: 200px;
+    width: fit-content;
     background: yellow;
     padding: 5px;
 }
 
 .buttonContainer{
     display:flex;
-    border: 3px solid green;
+
     padding: 5px;
     height: 100%;
 }
@@ -42,8 +53,21 @@
     width: 100%;
 }
 .screenItem{
-    border: 3px solid orange;
-    min-height: 20px;
+    min-height: 30px;
     margin: 0;
     text-align: right;
+}
+
+.itemBox{
+    width:50px
+}
+
+div.clearEquals{
+    display: flex;
+    flex-direction: column;
+    height:100%;
+}
+
+button.clearEquals{
+    height: 100px;
 }
