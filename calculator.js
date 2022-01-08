@@ -138,10 +138,12 @@ function display(inputNumber){
     } else if (pressedEqual == true){ 
         console.log("pressedEqual == True");
         if(!displayText.includes(".")){
+            console.log("doesn't includes a decimal");
             document.getElementById("display").innerText = ""+inputNumber;
             pressedEqual = false;
         } else{
-            document.getElementById("display").innerText = inputNumber;
+            console.log("includes a decimal");
+            document.getElementById("display").innerText = displayText+""+inputNumber;
             pressedEqual = false;
         }
     } else{
