@@ -9,33 +9,28 @@
     <title>Odin Calculator</title>
 </head>
 <body>
-    <p>Display Here:</p>
-    <div>
-        <p id="previousCalculation"></p>
-        <p id="display">0</p>
+    <div class="calculatorContainer">
+        <div class="screen">
+            <p id="previousCalculation"></p>
+            <p id="display">0</p>
+        </div>
+        <button id="1" onclick="display(1)">1</button>
+        <button id="2" onclick="display(2)">2</button>
+        <button id="3" onclick="display(3)">3</button>
+        <button id="4" onclick="display(4)">4</button>
+        <button id="5" onclick="display(5)">5</button>
+        <button id="6" onclick="display(6)">6</button>
+        <button id="7" onclick="display(7)">7</button>
+        <button id="8" onclick="display(8)">8</button>
+        <button id="9" onclick="display(9)">9</button>
+        <button id="0" onclick="display(0)">0</button>
+        <button id="point" onclick="display(101)">.</button>
+        <button id="clear" onclick="cleared()">CE</button>
+        <button id="add" onclick="getOperation('+')">+</button>
+        <button id="subtract" onclick="getOperation('-')">-</button>
+        <button id="multiply" onclick="getOperation('*')">x</button>
+        <button id="divide" onclick="getOperation('/')">/</button>
+        <button id="equals" onclick="equalClick()">=</button>
     </div>
-    <br>
-    <button id="1" onclick="display(1)">1</button>
-    <button id="2" onclick="display(2)">2</button>
-    <button id="3" onclick="display(3)">3</button>
-    <br>
-    <button id="4" onclick="display(4)">4</button>
-    <button id="5" onclick="display(5)">5</button>
-    <button id="6" onclick="display(6)">6</button>
-    <br>
-    <button id="7" onclick="display(7)">7</button>
-    <button id="8" onclick="display(8)">8</button>
-    <button id="9" onclick="display(9)">9</button>
-    <br>
-    <button id="0" onclick="display(0)">0</button>
-    <button id="point" onclick="display(101)">.</button>
-    <button id="clear" onclick="cleared()">CE</button>
-    <br>
-    <button id="add" onclick="getOperation('+')">+</button>
-    <button id="subtract" onclick="getOperation('-')">-</button>
-    <button id="multiply" onclick="getOperation('*')">x</button>
-    <button id="divide" onclick="getOperation('/')">/</button>
-    <br>
-    <button id="equals" onclick="equalClick()">=</button>
 </body>
 </html>
