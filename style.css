@@ -1,18 +1,49 @@
-.calculatorContainer,
-    .screen{
-    justify-items: center;
-    align-items: center;
+.bodyContainer{
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-color: gray;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: thick;
 }
 
 .calculatorContainer{
-    max-width: 150px;
-}
-.buttonContainer{
-    display:flex;
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    border-color: blue;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: thick;
+    height: 300px;
+    width: 200px;
+    background: yellow;
+    padding: 5px;
 }
 
-.screen{
-    
+.buttonContainer{
+    display:flex;
+    border: 3px solid green;
+    padding: 5px;
+    height: 100%;
+}
+
+.screenContainer{
+    border: 3px solid green;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    flex-direction: column;
+    width: 100%;
+}
+.screenItem{
+    border: 3px solid orange;
+    min-height: 20px;
+    margin: 0;
+    text-align: right;
 }
