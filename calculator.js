@@ -136,7 +136,7 @@ function display(inputNumber){
             document.getElementById("display").innerText = displayText + ".";
         } 
         //document.getElementById("display").innerText = displayText; //do nothing
-    } else if (pressedEqual == true && pressedDecimal == false){ //buggy conditional. I admit that the global variable pressedDecimal and pressedEqual are both of a mess, but they fix issues.
+    } else if (pressedEqual == true && pressedDecimal == true){ //buggy conditional. I admit that the global variable pressedDecimal and pressedEqual are both of a mess, but they fix issues.
         console.log("pressedEqual == True");
         document.getElementById("display").innerText = ""+inputNumber;
         pressedEqual = false;
