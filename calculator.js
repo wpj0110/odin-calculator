@@ -160,3 +160,14 @@ function cleared(){
     currentOperation = "";
     pressedEqual = false;
 }
+
+function backSpace(){
+    let displayText = document.getElementById("display").textContent;
+    if (displayText != 0){
+        displayText = displayText.slice(0, -1);
+        document.getElementById("display").innerText = displayText;
+    }
+    if (displayText.length == 0){
+        document.getElementById("display").innerText = "0";
+    }
+}
