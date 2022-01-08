@@ -94,6 +94,7 @@ function calculate(){ //I honestly forgot what to do with this
         console.log("No operations");
         currentOperation = '+';
         currentResult_2 = 0;
+        currentResult_1 = parseFloat(document.getElementById("display").textContent);
     } else{
         currentResult_2 = parseFloat(document.getElementById("display").textContent);
     }
@@ -140,12 +141,14 @@ function display(inputNumber){
         if(!displayText.includes(".")){
             console.log("doesn't includes a decimal");
             document.getElementById("display").innerText = ""+inputNumber;
-            pressedEqual = false;
-        } else{
+        } else if (currentOperation.length != 0){
             console.log("includes a decimal");
             document.getElementById("display").innerText = displayText+""+inputNumber;
-            pressedEqual = false;
+        } else {
+            console.log("includes a decimal but replacing the whole number");
+            document.getElementById("display").innerText = ""+inputNumber;
         }
+        pressedEqual = false;
     } else{
         console.log("concatenating display");
         document.getElementById("display").innerText = displayText + "" + inputNumber;

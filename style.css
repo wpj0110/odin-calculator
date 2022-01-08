@@ -7,7 +7,9 @@ button{
     width:50px;
     height:50px;
     background: burlywood;
-    
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .bodyContainer{
@@ -48,14 +50,15 @@ button{
     background: white;
     display: flex;
     justify-content: center;
-    align-items: top;
     flex-direction: column;
     width: 100%;
+    flex-wrap: wrap;
 }
 .screenItem{
     min-height: 30px;
     margin: 0;
     text-align: right;
+
 }
 
 .itemBox{
